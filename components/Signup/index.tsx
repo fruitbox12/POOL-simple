@@ -16,7 +16,7 @@ const Signup = (): JSX.Element => {
     return (
         <section className={styles.signup}>
             <h1>Magic Wallet</h1>
-            <img src="images/main-image.svg" alt="Magic Wallet" />
+            <img src="images/pooltogether-token--purple-gradient.svg" alt="Magic Wallet" />
             <span>Log in to your wallet</span>
             <form onSubmit={handleSubmit}>
                 <input
