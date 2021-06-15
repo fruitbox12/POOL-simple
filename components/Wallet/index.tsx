@@ -17,7 +17,7 @@ const Wallet = (): JSX.Element | null => {
     const logout = useLogout();
 
     const [ethBalance, reloadEth] = useETHBalance();
-    const [balances, fetchUserErc20] = useERC20Balances();
+    const [balances, poolBalance, fetchUserErc20] = useERC20Balances();
 
     /** Reloader function  */
     const reloader = useCallback(() => {
@@ -49,6 +49,9 @@ const Wallet = (): JSX.Element | null => {
                 <span>Your Balance</span>
                 <p className={styles.totalBalance}>
                     {formatETH(ethBalance)} ETH
+                </p>
+                <p className={styles.totalBalance}>
+                    {formatETH(poolBalance)} POOL
                 </p>
 
                 <span>Your Address</span>

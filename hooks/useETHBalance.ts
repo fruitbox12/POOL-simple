@@ -9,7 +9,7 @@ const useETHBalance = (): [BigNumber, () => Promise<void>] => {
 
     const fetchUserETH = async () => {
         if (!user) {
-            setBalance(BigNumber.from("0"));
+            setBalance(BigNumber.from("0x"));
 
             return;
         }

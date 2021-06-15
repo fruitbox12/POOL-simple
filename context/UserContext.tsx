@@ -100,7 +100,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
             }
         };
         persistUser();
-    }, [logout]);
+    }, []);
 
     return (
         <UserContext.Provider
