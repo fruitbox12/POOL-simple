@@ -8,6 +8,9 @@ export const formatETH = (balance: BigNumber): string => {
 };
 
 export const formatERC20 = (balance: BigNumber, decimals: number): string => {
+    if (!balance || !decimals) {
+        return "0.00"
+    }
     return ethers.utils.formatUnits(balance, decimals);
 };
 

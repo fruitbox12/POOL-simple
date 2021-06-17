@@ -9,7 +9,7 @@ const useETHBalance = (): [BigNumber, () => Promise<void>] => {
 
     const fetchUserETH = async () => {
         if (!user) {
-            setBalance(BigNumber.from("0x"));
+            setBalance(BigNumber.from("0"));
 
             return;
         }
@@ -24,7 +24,7 @@ const useETHBalance = (): [BigNumber, () => Promise<void>] => {
     useEffect(() => {
         fetchUserETH();
     }, [user?.provider]);
-
+    // console.log('useETHBalances-balance', balance)
     return [balance, fetchUserETH];
 };
 

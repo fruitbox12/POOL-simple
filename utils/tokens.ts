@@ -14,3 +14,17 @@ export const fetchTokens = async (): Promise<Token[]> => {
     const data: TokenList = await res.json();
     return data?.tokens;
 };
+
+export const fetchCoinGeckoTokens = async (): Promise<Token[]> => {
+    const res = await fetch(
+        "https://tokens.coingecko.com/uniswap/all.json", {
+            mode:'cors',
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+           }
+        
+        });
+    const data: TokenList = await res.json();
+    return data?.tokens;
+};

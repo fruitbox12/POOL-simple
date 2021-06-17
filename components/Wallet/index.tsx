@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import useETHBalance from "../../hooks/useETHBalance";
 import useERC20Balances from "../../hooks/useERC20Balances";
+import usePTBalances from "../../hooks/usePTBalances";
 import { useLogout, useUser } from "../../context/UserContext";
 import { formatETH, formatERC20 } from "../../utils/format";
 
@@ -17,18 +18,20 @@ const Wallet = (): JSX.Element | null => {
     const logout = useLogout();
 
     const [ethBalance, reloadEth] = useETHBalance();
-    const [balances, poolBalance, fetchUserErc20] = useERC20Balances();
+    const [balances, fetchUserErc20] = useERC20Balances();
+    const [POOL, PCUSDC, fetchUserPT] = usePTBalances();
 
     /** Reloader function  */
     const reloader = useCallback(() => {
         reloadEth();
         fetchUserErc20();
-    }, [reloadEth, fetchUserErc20]);
+        fetchUserPT();
+    }, [reloadEth, fetchUserErc20, fetchUserPT]);
 
-    /** Reload these every 10 sec */
+    /** Reload these every 15 sec */
     useEffect(() => {
-        const timeout = setTimeout(() => reloader(), 10000);
-        return () => clearTimeout(timeout);
+        const timeout = setTimeout(() => reloader(), 15000);
+        return () => { clearTimeout(timeout)};
     }, [reloader]);
 
     if (!user) {
@@ -42,16 +45,19 @@ const Wallet = (): JSX.Element | null => {
     if (receive) {
         return <Receive goBackToWallet={() => setReceive(false)} />;
     }
-
+    // console.log('index', POOL.balance)
     return (
         <section className={styles.wallet}>
             <div className={styles.balance}>
-                <span>Your Balance</span>
+                <span>Balances</span>
                 <p className={styles.totalBalance}>
                     {formatETH(ethBalance)} ETH
                 </p>
                 <p className={styles.totalBalance}>
-                    {formatETH(poolBalance)} POOL
+                    {formatERC20(POOL.balance, POOL.decimals)} POOL
+                </p>
+                <p className={styles.totalBalance}>
+                    {formatERC20(PCUSDC.balance, PCUSDC.decimals)} Tickets
                 </p>
 
                 <span>Your Address</span>

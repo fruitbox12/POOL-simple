@@ -1,6 +1,6 @@
 import { BigNumber, ethers } from "ethers";
 import { getEthersBalances } from "./eth-balance-checker";
-import { fetchTokens } from "./tokens";
+import { fetchTokens, fetchCoinGeckoTokens } from "./tokens";
 // TODO https://github.com/wbobeirne/eth-balance-checker
 
 export const getETHBalance = async (
@@ -25,6 +25,22 @@ export const getTokensBalances = async (
         [address],
         tokens,
     );
-
     return tokensWithBalances;
+};
+
+export const getPTBalances = async (
+    provider: ethers.providers.Web3Provider,
+) => {
+    const tokenList = await fetchCoinGeckoTokens()
+    
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+    // console.log('balances_getPTBalances-tokenList', tokenList)
+
+    const coinGeckoTokensWithBalances = await getEthersBalances(
+        provider,
+        [address],
+        tokenList
+    );
+    return coinGeckoTokensWithBalances;
 };
