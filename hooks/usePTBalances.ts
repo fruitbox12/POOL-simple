@@ -17,8 +17,8 @@ const usePTBalances = (): [any , any, () => Promise<void>] => {
         }
         try {
             const tokensBalance = await getPTBalances(user.provider);
-            setPOOL(tokensBalance.find(element => element.symbol === "POOL"));
-            setPCUSDC(tokensBalance.find(element => element.symbol === "PCUSDC"));
+            setPOOL(tokensBalance.find(token => token.symbol === "POOL"));
+            setPCUSDC(tokensBalance.find(token => token.symbol === "PCUSDC"));
 
         } catch (err) {
             setPOOL(0);
