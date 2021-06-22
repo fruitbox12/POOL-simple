@@ -45,23 +45,32 @@ const Wallet = (): JSX.Element | null => {
     if (receive) {
         return <Receive goBackToWallet={() => setReceive(false)} />;
     }
-    // console.log('index', POOL.balance)
+
     return (
         <section className={styles.wallet}>
             <div className={styles.balance}>
+                <span>Your Address</span>
+                <CopyUserAddress address={user.address} color="blue" 
+                />
+                <span>(Click to Copy)</span> 
+
                 <span>Balances</span>
                 <p className={styles.totalBalance}>
                     {formatETH(ethBalance)} ETH
-                </p>
-                <p className={styles.totalBalance}>
-                    {formatERC20(POOL.balance, POOL.decimals)} POOL
-                </p>
-                <p className={styles.totalBalance}>
-                    {formatERC20(PCUSDC.balance, PCUSDC.decimals)} Tickets
+                <span>(ETH is required to send Tokens to another address)</span>
                 </p>
 
-                <span>Your Address</span>
-                <CopyUserAddress address={user.address} color="blue" />
+                <span>Governance Tokens</span>
+                <p className={styles.totalBalance}>
+                    {formatERC20(POOL.balance, POOL.decimals)} POOL
+                <span>(If you have these, you can vote on PoolTogether Changes)</span>
+                </p>
+                
+                <p className={styles.totalBalance}>
+                    <span>Tickets</span>
+                    {formatERC20(PCUSDC.balance, PCUSDC.decimals)} pcUSDC
+                    <span>(1 pcUSDC = $1 USD = 1 Ticket)</span>
+                </p>
             </div>
 
             <div className={styles.main}>

@@ -4,6 +4,7 @@ import { useUser } from "../context/UserContext";
 import { getPTBalances } from "../utils/balances";
 
 const usePTBalances = (): [any , any, () => Promise<void>] => {
+    console.log('called usePTBalances')
     const user = useUser();
     const [POOL, setPOOL] = useState<any>(0);
     const [PCUSDC, setPCUSDC] = useState<any>(0);
