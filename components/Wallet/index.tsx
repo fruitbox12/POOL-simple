@@ -7,6 +7,7 @@ import { formatETH, formatERC20 } from "../../utils/format";
 
 import Send from "../Send";
 import Receive from "../Receive";
+import Ramp from "../Ramp";
 import CopyUserAddress from "../CopyUserAddress/CopyUserAddress";
 
 import styles from "./Wallet.module.scss";
@@ -33,7 +34,7 @@ const Wallet = (): JSX.Element | null => {
         const timeout = setTimeout(() => reloader(), 15000);
         return () => { clearTimeout(timeout)};
     }, [reloader]);
-
+ 
     if (!user) {
         return null;
     }
@@ -73,6 +74,8 @@ const Wallet = (): JSX.Element | null => {
                 </p>
             </div>
 
+            <div id="ramp-container"></div>
+
             <div className={styles.main}>
                 <button onClick={reloader} className={styles.reloadBtn}>
                     Reload Quantities
@@ -105,6 +108,7 @@ const Wallet = (): JSX.Element | null => {
             <div className={styles.buttons}>
                 <button onClick={() => setSend(true)}>Send</button>
                 <button onClick={() => setReceive(true)}>Receive</button>
+                <button onClick={Ramp}>Buy</button>
             </div>
             <div className={styles.logoutContainer}>
                 <button className={styles.logout} onClick={logout}>
