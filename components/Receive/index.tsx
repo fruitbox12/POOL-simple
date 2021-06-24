@@ -14,6 +14,7 @@ const Receive = ({ goBackToWallet }: ReceiveProps): JSX.Element | null => {
     if (!user) {
         return null;
     }
+    
     return (
         <section className={styles.receive}>
             <div className={styles.header}>
