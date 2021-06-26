@@ -1,7 +1,7 @@
 // import { ethers } from "ethers";
 
-// commonJS
-const { ethers, providers } = require('ethers')
+// for commonJS
+const { ethers } = require('ethers')
 // import { Pool } from "@uniswap/v3-sdk";
 import { Address } from "cluster";
 
