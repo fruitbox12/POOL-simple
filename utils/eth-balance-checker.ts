@@ -7,9 +7,7 @@ import { activeNetwork } from "../context/UserContext";
 let BALANCE_CHECKER_ADDRESS: any
 
 const checkNetwork = (network: string) => {
-    if (network === "mainnet") {
-        BALANCE_CHECKER_ADDRESS = "0xb1f8e55c7f64d203c1400b9d8555d050f94adf39"
-    } else if (network === "rinkeby") {
+    if (network === "rinkeby") {
         BALANCE_CHECKER_ADDRESS = "0x3183B673f4816C94BeF53958BaF93C671B7F8Cf2"
     } else if (network === "ropsten") {
         BALANCE_CHECKER_ADDRESS = "0x8D9708f3F514206486D7E988533f770a16d074a7"
