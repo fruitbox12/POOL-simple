@@ -8,6 +8,8 @@ import {
 } from "react";
 import { ethers } from "ethers";
 
+export const activeNetwork = "mainnet" // "mainnet", "ropsten", "rinkeby"
+
 let m: Magic; // Magic requires window to function
 
 interface User {
@@ -29,18 +31,27 @@ const UserContext = createContext<UserContextData>({
 });
 export default UserContext;
 
+
 export const UserContextProvider: React.FC = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
-
+    
     /**
      * Given the Magic Provider, return address and provider
      */
     const getAddressAndProvider = async () => {
         const provider = new ethers.providers.Web3Provider(
-            m.rpcProvider as any,
-        );
-        const signer = provider.getSigner();
-        const address = await signer.getAddress();
+            m.rpcProvider as any, activeNetwork
+            );
+            const signer = provider.getSigner();
+            console.log(`signer`, signer)
+
+            const address = await signer.getAddress();
+            console.log(`address`, address)
+
+            const network = provider.network // getNetwork() for homestead
+            console.log(`network`, network)
+
+        // console.log(`network`, network)
         return { address, provider };
     };
 
@@ -56,6 +67,8 @@ export const UserContextProvider: React.FC = ({ children }) => {
             setUser(user);
         }
     }, [user]);
+
+    console.log(`user.provider`,)
 
     /**
      * Login with magic, enrich context with address and provider for convenience

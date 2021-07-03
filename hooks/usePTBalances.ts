@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
 // import { TokenWithBalance, Token } from "../interfaces/tokens";
 import { getPTBalances } from "../utils/balances";
+// import main from "../utils/uniswap-checker"
 
 const usePTBalances = (): [any , any, () => Promise<void>] => {
     console.log('called usePTBalances')
@@ -25,6 +26,7 @@ const usePTBalances = (): [any , any, () => Promise<void>] => {
             setPCUSDC(0);
         }
     };
+    // console.log(`uniswap-checker`, main)
 
     useEffect(() => {
         fetchUserPT();

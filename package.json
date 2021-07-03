@@ -1,7 +1,6 @@
 {
   "name": "poolsimple",
   "author": "@GalloDaSballo",
-  "type": "module",
   "contributors": [
     {
       "name": "Nik Vogrinec",
@@ -32,6 +31,7 @@
   "dependencies": {
     "@ramp-network/ramp-instant-sdk": "^2.4.5",
     "add": "^2.0.6",
+    "esm": "^3.2.25",
     "ethereum-qr-code": "^0.3.0",
     "ethers": "^5.0.24",
     "isomorphic-unfetch": "^3.1.0",
@@ -41,6 +41,7 @@
     "react-click-away-listener": "^1.5.0",
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.13.1",
+    "ts-node": "^10.0.0",
     "yarn": "^1.22.10"
   },
   "devDependencies": {

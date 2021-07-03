@@ -24,7 +24,7 @@ export const getTokensBalances = async (
     const tokensWithBalances = await getEthersBalances(
         provider,
         [address],
-        tokens,
+        tokens
     );
     return tokensWithBalances;
 };
