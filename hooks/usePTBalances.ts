@@ -5,7 +5,6 @@ import { getPTBalances } from "../utils/balances";
 // import main from "../utils/uniswap-checker"
 
 const usePTBalances = (): [any , any, () => Promise<void>] => {
-    console.log('called usePTBalances')
     const user = useUser();
     const [POOL, setPOOL] = useState<any>(0);
     const [PCUSDC, setPCUSDC] = useState<any>(0);

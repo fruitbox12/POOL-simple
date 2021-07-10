@@ -68,8 +68,6 @@ export const UserContextProvider: React.FC = ({ children }) => {
         }
     }, [user]);
 
-    console.log(`user.provider`,)
-
     /**
      * Login with magic, enrich context with address and provider for convenience
      * @param email

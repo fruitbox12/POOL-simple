@@ -15,7 +15,6 @@ export const getETHBalance = async (
 export const getTokensBalances = async (
     provider: ethers.providers.Web3Provider,
 ) => {
-    console.log('called balances_getTokenBalances')
     const tokens = await fetchTokens();
 
     const signer = provider.getSigner();
@@ -32,7 +31,6 @@ export const getTokensBalances = async (
 export const getPTBalances = async (
     provider: ethers.providers.Web3Provider,
 ) => {
-    console.log('called balances_getPTBalances')
     const tokenList = await fetchCoinGeckoTokens()
     
     const signer = provider.getSigner();
