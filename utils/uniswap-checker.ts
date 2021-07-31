@@ -1,13 +1,16 @@
 // https://mainnet.infura.io/v3/9f6eb0e0e09b4214bdbdd08344e8b338
 // 0xc2e9213fe0aaf5ee55e4bbe665935c2df94af13d
 
-// for commonJS compile
+// for commonJS compile 
 // const { ethers } = require('ethers')
+// node --loader ts-node/esm --experimental-json-modules --experimental-specifier-resolution=node 
+
 import { ethers } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
 import { Token } from "@uniswap/sdk-core";
-import { abi as IUniswapV3PoolABI } from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
-
+// import { abi as IUniswapV3PoolABI } from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
+import pkg from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json';
+const { abi: IUniswapV3PoolABI } = pkg;
 const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/9f6eb0e0e09b4214bdbdd08344e8b338");
 
 const poolAddress = "0xc2e9213fe0aaf5ee55e4bbe665935c2df94af13d";
