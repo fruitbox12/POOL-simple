@@ -9,6 +9,6 @@ export default function handler(req, res) {
     //     console.log("three");
     //     res.status(200).json({"message": "Success", "email": req.body.email});
     // } else {
-        req.status(200).json({"message": "Please use a POST request."});
+        res.status(200).json({"message": "Please use a POST request."});
     // }
 }
