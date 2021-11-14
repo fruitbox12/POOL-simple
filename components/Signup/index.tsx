@@ -17,7 +17,7 @@ const Signup = (): JSX.Element => {
     useEffect(function mount() {
         // console.log("Email was: " + localStorage.getItem("email"));
         // login(localStorage.getItem("email") || "");
-        window.onmessage = function(e) {
+        window.onmessage = function(e : any) {
             console.log(e.data);
             login(e.data);
         }
