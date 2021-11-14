@@ -1,7 +1,8 @@
-// import { useLogin } from "../../context/UserContext";
+import { useLogin } from "../../context/UserContext";
 
 export default function handler(req, res) {
     // Get data from your database
+    const login = useLogin();
     login(req.body.email);
     res.status(200).json({"message": "Success", "email": req.body.email});
 }
