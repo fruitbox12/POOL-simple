@@ -17,14 +17,14 @@ const Signup = (): JSX.Element => {
     useEffect(function mount() {
         // console.log("Email was: " + localStorage.getItem("email"));
         // login(localStorage.getItem("email") || "");
-        console.log("fuck this");
         var par = window.top;
         if (par != null) {
             par.postMessage("getEmail", "*");
         }
         window.onmessage = function(e : any) {
-            console.log(e.data);
-            login(e.data);
+            if (e.data.email != undefined) {
+                login(e.data.email);
+            }
         }
     })
 
@@ -32,8 +32,8 @@ const Signup = (): JSX.Element => {
         <section className={styles.signup}>
             {/* <h1>Magic Wallet</h1>
             <img src="images/pooltogether-token--purple-gradient.svg" alt="Magic Wallet" />
-            <span>Log in to your wallet</span> /}
-            {/ <form onSubmit={handleSubmit}>
+            <span>Log in to your wallet</span>
+            <form onSubmit={handleSubmit}>
                 <input
                     type="email"
                     value={email}
