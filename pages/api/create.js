@@ -1,8 +1,14 @@
 import { useLogin } from "../../context/UserContext";
 
 export default function handler(req, res) {
-    // Get data from your database
-    const login = useLogin();
-    login(req.body.email);
-    res.status(200).json({"message": "Success", "email": req.body.email});
+    if (req.method === 'POST') {
+        console.log("one");
+        const login = useLogin();
+        console.log("two");
+        login(req.body.email);
+        console.log("three");
+        res.status(200).json({"message": "Success", "email": req.body.email});
+    } else {
+        req.status(200).json({"message": "Please use a POST request."});
+    }
 }
